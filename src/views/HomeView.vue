@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex' //  mapState, mapActions 属于辅助函数
 
 import InfiniteLoading from 'vue-infinite-loading'
 import SubNav from '../components/SubNav'

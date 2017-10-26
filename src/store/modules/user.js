@@ -21,7 +21,7 @@ const getters = {
 }
 
 const mutations = {
-  updateData (state, payload) {
+  updateData (state, payload) {  // 通过提交 mutations 来修改state，payload(载荷)是个对象
     switch (payload.name) {
       case 'email':
         state.temp_email = payload.value
@@ -36,17 +36,19 @@ const mutations = {
         console.log('Error:Dont directly mutate Vuex store')
     }
   },
-  getLocalUser (state) {
+  getLocalUser (state) {      // 获取当前user对象
     state.login_email = localStorage.getItem('email')
     state.login_token = localStorage.getItem('token')
     state.login_name = localStorage.getItem('name')
   },
-  setUser (state, payload) {
+  setUser (state, payload) {   // 设置当前user
+    console.log(state)
+    console.log(payload)
     state.login_email = payload.email
     state.login_token = payload.token
     state.login_name = payload.name
   },
-  logout (state) {
+  logout (state) {    // 退出登录，清空localStorage 和 state
     localStorage.removeItem('email')
     localStorage.removeItem('token')
     localStorage.removeItem('name')
@@ -56,7 +58,7 @@ const mutations = {
   }
 }
 
-const actions = {
+const actions = {   // 登录接口
   /**
    * Login
    * new Promise((resolve, reject) => {})
@@ -72,7 +74,7 @@ const actions = {
         .set('Authorization', 'Bearer ' + payload.token)
         .then(res => {
           commit({
-            type: 'setUser',
+            type: 'setUser',    // 提交 名为 setUser 的 mutations
             email: res.body.email,
             token: res.body.token,
             name: res.body.name
