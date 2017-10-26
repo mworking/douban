@@ -2,17 +2,20 @@
   <div class="login-view">
     <!--header-->
     <h1>
-      <a href="javascript:history.go(-1);">取消</a>登录豆瓣
+      <a href="javascript:history.go(-1);">取消</a>
+      登录豆瓣
     </h1>
     <!--content form-->
     <form method="get" @submit.prevent="onSubmit()">
       <p v-if="error" class="tip error">{{error}}</p>
+      <!--emial-->
       <div class="form-user">
         <label>
           <strong>邮箱</strong>
           <input v-model="email"　type="email"　name="email"　@input="updateData"　placeholder="邮箱"/>
         </label>
       </div>
+      <!--password-->
       <div class="form-pwd">
         <label>
           <strong>请输入密码</strong>
@@ -22,6 +25,7 @@
           <template v-if="passType === 'text'">
             <input v-model="token" type="text" name="token" @input="updateData" placeholder="Token">
           </template>
+          <!--是否显示密码的眼睛图标-->
           <span class="show-pwd" :class="{show: isShow}" @click="showPwd()"></span>
         </label>
       </div>
@@ -29,14 +33,9 @@
         <input id="remember" type="checkbox" name="remember" checked="">
         <label for="remember">下次自动登录</label>
       </div> -->
+      <!--login button-->
       <div class="">
-        <button
-          class="submit"
-          type="submit"
-          :disabled="isDisabled"
-          :class="{disabled: isDisabled}">
-          {{loginState}}
-        </button>
+        <button class="submit" type="submit"　:disabled="isDisabled"　:class="{disabled: isDisabled}">　{{loginState}}　</button>
       </div>
     </form>
     <!--footer-->
