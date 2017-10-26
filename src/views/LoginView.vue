@@ -1,39 +1,26 @@
 <template>
   <div class="login-view">
+    <!--header-->
     <h1>
       <a href="javascript:history.go(-1);">取消</a>登录豆瓣
     </h1>
+    <!--content form-->
     <form method="get" @submit.prevent="onSubmit()">
       <p v-if="error" class="tip error">{{error}}</p>
       <div class="form-user">
         <label>
           <strong>邮箱</strong>
-          <input
-            v-model="email"
-            type="email"
-            name="email"
-            @input="updateData"
-            placeholder="邮箱">
+          <input v-model="email"　type="email"　name="email"　@input="updateData"　placeholder="邮箱"/>
         </label>
       </div>
       <div class="form-pwd">
         <label>
           <strong>请输入密码</strong>
           <template v-if="passType === 'password'">
-            <input
-            v-model="token"
-            type="password"
-            name="token"
-            @input="updateData"
-            placeholder="Token">
+            <input v-model="token" type="password" name="token" @input="updateData" placeholder="Token">
           </template>
           <template v-if="passType === 'text'">
-            <input
-            v-model="token"
-            type="text"
-            name="token"
-            @input="updateData"
-            placeholder="Token">
+            <input v-model="token" type="text" name="token" @input="updateData" placeholder="Token">
           </template>
           <span class="show-pwd" :class="{show: isShow}" @click="showPwd()"></span>
         </label>
@@ -52,6 +39,7 @@
         </button>
       </div>
     </form>
+    <!--footer-->
     <div class="footer">
       <div class="more-login">使用其他方式登录 &amp; 找回密码</div>
       <div class="btns">
